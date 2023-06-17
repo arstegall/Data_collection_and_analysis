@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Funkcije - UPZ</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">UPZ</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Funkcije</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1"></h1>
+<h3 id="save_to_file">save_to_file</h3>
+<pre><code class="language-python">.save_to_file(
+   data, file_name
+)
+</code></pre>
+<hr />
+<p>Funkcija koju pozivamo kada podatke zelimo trajno pohraniti u datoteku</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (str) : podaci za zapisati u datoteku</li>
+<li><strong>file_name</strong> (str) : ime datooteke u koju ce se zapisati podaci</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>None</p>
+<hr />
+<h3 id="extract_news_from_last_year">extract_news_from_last_year</h3>
+<pre><code class="language-python">.extract_news_from_last_year(
+   category
+)
+</code></pre>
+<hr />
+<p>U ovoj funkciji imami logiku koja pronalazi sve clanke na index.hr stranice u proteklih dana.
+Funkcija radi na nacin da koristi trazilizu index portala, trazilicu ispuni sa imenom kategorije
+kao npr. "vijesti" te se koristi order_by opcija za sortiranje clanaka od najnovijeg prema najstarijem.
+Iteriramo kroz rezultate i izvlacimo rezultate do trenutka kada naidemo na clanak koji je stariji od
+godine dana. Za parsiranje stranice koristi se BeautifulSoup. Nakon sto smo iterirali kroz sve clanke
+rezultate spremamo u novu datoteku kako bi bili dostupni za kasniju analizu
+Notes:
+Ova funkcija se moze izvrsavati jako dugo vremena zbog mnogobrojnih zahtjeva prema portalu,
+nase zabiljeno vrijeme je cca 5 sati!</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>category</strong> (str) : kategorija koja se pretrazuje i za koju extractamo clanke sa portala</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>titles</strong> (list) : lista svih pronadenih naslova za danu kategoriju</li>
+</ul>
+<hr />
+<h3 id="remove_last_h3_item">remove_last_h3_item</h3>
+<pre><code class="language-python">.remove_last_h3_item(
+   html: str
+)
+</code></pre>
+<hr />
+<p>Funkcija sa kojim prociscavamo preuzete clanke.
+Konkretno uklanjamo h3 html oznake.</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>html</strong> (str) : html string koji prociscavamo od h3 oznaka</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>clean_html</strong> (str) : procisceni html string</li>
+</ul>
+<hr />
+<h3 id="find_category">find_category</h3>
+<pre><code class="language-python">.find_category(
+   url: str
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koj iz URL-a clanka izdvajamo kategoriju u koju clanak pripada
+(kategorija clanka je navedena u URL-u)</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>url</strong> (str) : URL clanka iz kojeg citamo kategoriju u koju clanak pripada</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>category</strong> (str) : detektirana kategorija u koju pripada clanak uz pripadajuci URL</li>
+</ul>
+<hr />
+<h3 id="find_title">find_title</h3>
+<pre><code class="language-python">.find_title(
+   soup
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje pronalazimo naslov clanka sluzeci se title html oznakom u html-u clanka.</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>soup</strong>  : bs objekt koji sadrzava cijeloviti html clanka</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>title</strong> (str) : detektirani naslov clanka</li>
+</ul>
+<hr />
+<h3 id="find_date_and_author">find_date_and_author</h3>
+<pre><code class="language-python">.find_date_and_author(
+   info
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje pronalazimo autora i datum clanka.
+Ova funkcija ucitava html clanka te u javascript skriptama dostupnima u html-u
+pronalazi podatke o autoru i datumu objavljivanja clanka.
+Takoder prilagodava datum u zeljeni format</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>info</strong>  : bs objekt koji sadrzava potrebne html podatke</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>author_full_name</strong> (str, str) : datum objave clanka te autor clanka</li>
+</ul>
+<hr />
+<h3 id="find_keywords">find_keywords</h3>
+<pre><code class="language-python">.find_keywords(
+   info
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje iz html-a izvlacimo kljucne rijeci.
+Slicno find_date_and_author funkciji ova funkcija trazi javascript kod
+unutar htmla koji sadrzi kljucne rijeci koje je naveo autor clanka</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>info</strong>  :  bs objekt koji sadrzava potrebne html podatke</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>found_keywords</strong> (list) : pronadene kljucne rijeci clanka</li>
+</ul>
+<hr />
+<h3 id="find_text_in_html_format">find_text_in_html_format</h3>
+<pre><code class="language-python">.find_text_in_html_format(
+   soup
+)
+</code></pre>
+<hr />
+<p>Funkcija koja pretvara bs objekt u string koji spremamo kao tekst clanka</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>soup</strong>  : bs objekt sa html-om clanka</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>full_text_in_html</strong> (str) : string generiran iz bs objekta</li>
+</ul>
+<hr />
+<h3 id="remove_html_tags">remove_html_tags</h3>
+<pre><code class="language-python">.remove_html_tags(
+   html: str, tags: List[str]
+)
+</code></pre>
+<hr />
+<p>Ova funkcija ce pretvarati clanke iz html formata u obican string.
+(HTML oznake biti ce izbrisane).
+Notes:
+Koristenjem ove funkcije biti ce teze prepoznati podnaslove unutar clanka</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>html</strong> (str) : html string clanka</li>
+<li><strong>tags</strong> (list) : html oznake koje zelimo ukloniti iz html-a</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>html</strong> (str) : string sa uklojenim html tagovima</li>
+</ul>
+<hr />
+<h3 id="load_all_links">load_all_links</h3>
+<pre><code class="language-python">.load_all_links(
+   categories_list, links_suffix = '_links'
+)
+</code></pre>
+<hr />
+<p>Funkcija koja iz vec spremljene datoteke ucitava sve spremljene linkove clanaka.
+Pretpostavka je da za svaku kategoriju postoji zasebna datoteka te se ucitava kategorija po kategorija.</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>categories_list</strong> (str) : lista kategorija za koju zelimo ucitati linkove iz datoteke</li>
+<li><strong>links_suffix</strong> (str) : sufiks koji smo zadali za datoteku koja sadrzi iskljucivo linkove na clanke
+(ne i sam sadrzak clanaka)</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>links</strong> (list) : lista koja sazdrava sve pohranjene linkove u datotekama za dane kategorije</li>
+</ul>
+<hr />
+<h3 id="load_all_articles">load_all_articles</h3>
+<pre><code class="language-python">.load_all_articles(
+   categories_list, links_suffix = '_extracted_data'
+)
+</code></pre>
+<hr />
+<p>Funkcija koja iz vec spremljenih datoteka ucitava sve clanke tj sadrzaj clanaka.
+Pretpostavka je da za svaku kategoriju postoji zasebna datoteka te se ucitava kategorija po kategorija.</p>
+<p>Zbog potencialnog velikog broja clanaka datoteke mogu biti relativno velike sto ce utjecati na performanse
+tj. brzinu rada ovog koda.</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>categories_list</strong> (str) : lista kategorija za koju zelimo ucitati sadrzaj clanaka iz datoteke</li>
+<li><strong>links_suffix</strong>  : sufiks koji smo zadali za datoteku koja sadrzi sadrzaje clanaka</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>articles</strong> (list) : lista sa svim pohranjemim clancima i njihovim sadrzajem</li>
+</ul>
+<hr />
+<h3 id="extract_corona_articles">extract_corona_articles</h3>
+<pre><code class="language-python">.extract_corona_articles(
+   articles
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje detektiramo sve clanke vezane uz korona virus tematiku te takve clanke izvlacimo za daljnu obradu.
+za kasniju obradu. Korona clanci prepoznati su na nacin da pretrazujemo tekst naslova clanka,
+tekst samog sadrzaja clanka i spomenute kljucne rijeci u clanku te s obzirom na predefiniranu listu rijeci
+koje se asociraju sa korona virusom odlucujemo radi li se o clanku koji je vezan za korona virus ili ne</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>articles</strong> (list) : lista svih clanaka koji su pronadeni za period od zadnjih godinu dana</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>corona_articles</strong> (list) : lista svih clanaka koji su detekirani da sadrze tekst koji se dotice teme korona virusa</li>
+</ul>
+<hr />
+<h3 id="extract_vaccination_articles">extract_vaccination_articles</h3>
+<pre><code class="language-python">.extract_vaccination_articles(
+   corona_articles
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje detektiramo sve clanke vezane uz podtemu cijepljenja protiv korona virusa
+te takve clanke izvlacimo za daljnu obradu.
+Clanci o cijepljenju prepoznati su na nacin da pretrazujemo tekst naslova clanka,
+tekst samog sadrzaja clanka i spomenute kljucne rijeci u clanku te s obzirom na predefiniranu listu rijeci
+koje asociraju na cijepljenjem protiv korona virusa odlucujemo radi li se o clanku koji je vezan
+za cijepljenje protiv virusa ili ne</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>corona_articles</strong> (list) : lista svih clanaka koji su pronadeni na temu korona virusa za period od zadnjih godinu dana</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>vaccination_keywords</strong> (list) : lista svih clanaka koji su detekirani da sadrze tekst koji se dotice teme
+cijepljenja protiv korona virusa</li>
+</ul>
+<hr />
+<h3 id="extract_isolation_articles">extract_isolation_articles</h3>
+<pre><code class="language-python">.extract_isolation_articles(
+   corona_articles
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje detektiramo sve clanke vezane uz podtemu samoizolacije
+te takve clanke izvlacimo za daljnu obradu.
+Clanci o samoizolaciji prepoznati su na nacin da pretrazujemo tekst naslova clanka,
+tekst samog sadrzaja clanka i spomenute kljucne rijeci u clanku te s obzirom na predefiniranu listu rijeci
+koje asociraju na samoizolaciju te odlucujemo radi li se o clanku koji je vezan
+za samoizolaciju ili ne</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>corona_articles</strong> (list) : lista svih clanaka koji su pronadeni na temu korona virusa za period od zadnjih godinu dana</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>isolation_articles</strong> (list) : lista svih clanaka koji su detekirani da sadrze tekst koji se dotice teme
+samoizolacije</li>
+</ul>
+<hr />
+<h3 id="extract_symptoms_articles">extract_symptoms_articles</h3>
+<pre><code class="language-python">.extract_symptoms_articles(
+   corona_articles
+)
+</code></pre>
+<hr />
+<p>Funkcija pomocu koje detektiramo sve clanke vezane uz podtemu simptoma korona virusa
+te takve clanke izvlacimo za daljnu obradu.
+Clanci o simptomima korone prepoznati su na nacin da pretrazujemo tekst naslova clanka,
+tekst samog sadrzaja clanka i spomenute kljucne rijeci u clanku te s obzirom na predefiniranu listu rijeci
+koje asociraju na simptome korone te odlucujemo radi li se o clanku koji je vezan
+za simptome korone ili ne</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>corona_articles</strong> (list) : lista svih clanaka koji su pronadeni na temu korona virusa za period od zadnjih godinu dana</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>symptoms_articles</strong> (list) : lista svih clanaka koji su detekirani da sadrze tekst koji se dotice teme
+simptoma korone</li>
+</ul>
+<hr />
+<h3 id="remove_duplicated_dicts_from_list">remove_duplicated_dicts_from_list</h3>
+<pre><code class="language-python">.remove_duplicated_dicts_from_list(
+   items
+)
+</code></pre>
+<hr />
+<p>Pomocna funkcija kojom micemo duplikate iz dane liste</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>items</strong> (list) : lista koju zelimo procistiti od duplikata</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>items_without_duplicates</strong> (list) : lista bez duplikata</li>
+</ul>
+<hr />
+<h3 id="generate_monthly_statistic">generate_monthly_statistic</h3>
+<pre><code class="language-python">.generate_monthly_statistic(
+   articles
+)
+</code></pre>
+<hr />
+<p>Funkcija koju koristimo za generiranje mjesecne statistike odnosno racunanje
+broja clanaka po mjesecima</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>articles</strong> (list) : lista clanaka za koju zelimo provesti generiranje statistike po mjesecima</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>month_statistic</strong> (dict) : dict objekt koji sadrze sve mjesece (kao kljucevi dict objekta)
+te broj objavljenih clanaka za taj mjesec</li>
+</ul>
+<hr />
+<h3 id="replace_croatian_chars">replace_croatian_chars</h3>
+<pre><code class="language-python">.replace_croatian_chars(
+   string
+)
+</code></pre>
+<hr />
+<p>Prilikom spremanja clanaka znakovi karakteristicni za hrvatsku abecedu su spremljeni kao
+unicode blok. Ova funkcija pretvara unicode blokove za hrvatska slova u najslicnija internacionalna slova
+(npr. Š-&gt;S...)</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>string</strong> (str) : string u kojem zelimo pretvoriti unicode blokove u slova</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>string</strong> (str) : string bez unicode blokova</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,4 @@
+site_name: UPZ
+repo_dir: .
+plugins:
+    - with-pdf

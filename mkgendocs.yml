@@ -1,0 +1,26 @@
+sources_dir: docs
+templates_dir: docs/templates
+version: master
+
+pages:
+  - page: "funkcije.md"
+    source: "projekt.py"
+    functions:
+      - save_to_file
+      - extract_news_from_last_year
+      - remove_last_h3_item
+      - find_category
+      - find_title
+      - find_date_and_author
+      - find_keywords
+      - find_text_in_html_format
+      - remove_html_tags
+      - load_all_links
+      - load_all_articles
+      - extract_corona_articles
+      - extract_vaccination_articles
+      - extract_isolation_articles
+      - extract_symptoms_articles
+      - remove_duplicated_dicts_from_list
+      - generate_monthly_statistic
+      - replace_croatian_chars
