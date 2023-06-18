@@ -2,6 +2,4 @@
 
 Collection and analysis of data related to the COVID-19 pandemic from a most popular Croatian web portal Index.
 
-In this project, BeautifulSoup was used to extract atributes from articles related to the COVID-19 pandemic: eg id, article link, article title, article author, publication date, article text, tags, etc...
-
-After that, analyzes were performed and data visualizations based on the analyzes were created.
+In this project, BeautifulSoup was used to extract atributes from articles related to the COVID-19 pandemic: eg id, article link, article title, article author, publication date, article text, tags, etc... After that, analyzes were performed and data visualizations based on the analyzes were created. A discourse analysis was also made, that is, the most frequently terms that appear in the articles were analyzed.
